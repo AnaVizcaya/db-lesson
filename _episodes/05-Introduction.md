@@ -18,6 +18,9 @@ HEP experiments take bast amounts of data with the main detectors, but they also
 > ## Conditions data
 > The conditions data is a subset of the experimental metadata, specifically referring to the metadata required for offline data analysis and reconstruction.
 > The conditions data of ProtoDUNE is stored in a dedicated database, the Conditions Database.
+{: .callout}
+
+The conditions database consists of two PostgreSQL databases.
 
 ## Do local setup for local rendering (optional)
 
