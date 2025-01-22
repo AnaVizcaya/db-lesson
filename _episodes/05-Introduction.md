@@ -17,10 +17,15 @@ HEP experiments take bast amounts of data with the main detectors, but they also
 
 > ## Conditions data
 > The conditions data is a subset of the experimental metadata, specifically referring to the metadata required for offline data analysis and reconstruction.
-> The conditions data of ProtoDUNE is stored in a dedicated database, the Conditions Database.
+> The conditions data of ProtoDUNE is stored in a dedicated database, **the Conditions Database.**
 {: .callout}
 
 The conditions database consists of two PostgreSQL databases.
+1. **The master store of metadata (UConDB) database** is the centralized place where all the information is stored as blobs. Adding new information is straightforward, and there is no need to have a predefined database schema.
+2. **The run conditions database** stores a subset of the UConDB metadata in a table. This facilitates querying the metadata with conditions on the table values, for example to get all the runs with certain characteristics, like runs with High Voltage = 175 kV.
+
+![Conditions database architecture](/fig/dbarc.png)
+An illustration of both ProtoDUNE's metadata stream and the design of the conditions database. The direction of the metadata stream is shown by the arrows. Users may obtain the metadata by interacting with the conditions database APIs.
 
 ## Do local setup for local rendering (optional)
 
