@@ -3,12 +3,13 @@ title: Introduction To The Conditions Database
 teaching: 30
 exercises: 0
 questions:
-- What is the conditions database
-- Who can use it
+- What is the conditions database?
+- How can users access the data?
 objectives:
 - Learn the basic structure and what information is stored on the conditions database
 keypoints:
-- All users can use the conditions database to get run conditions parameters.
+- There are several APIs available to access the information in the conditions database.
+Which to use depends on your specific needs
 ---
 
 
