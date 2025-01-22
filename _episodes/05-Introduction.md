@@ -8,8 +8,7 @@ questions:
 objectives:
 - Learn the basic structure and what information is stored on the conditions database
 keypoints:
-- There are several APIs available to access the information in the conditions database.
-Which to use depends on your specific needs
+- There are several APIs available to access the information in the conditions database. Which to use depends on your specific needs
 ---
 
 
