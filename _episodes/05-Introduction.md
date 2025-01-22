@@ -4,7 +4,7 @@ teaching: 30
 exercises: 0
 questions:
 - What is the conditions database?
-- How can users access the data?
+- What kind of data is stored in this database?
 objectives:
 - Learn the basic structure and what information is stored on the conditions database
 keypoints:
@@ -12,13 +12,12 @@ keypoints:
 ---
 
 
-## Instructions for local setup to build your lessons 
+## The Conditions Database
+HEP experiments take bast amounts of data with the main detectors, but they also have a lot of data, also known as metadata, coming from other sources. This metadata describes the data coming from the read-out of the primary detectors. 
 
-
-> ## Carpentries instructions 
-> The Carpentries provide excellent instructions and examples at: [https://carpentries.github.io/lesson-example/setup.html](https://carpentries.github.io/lesson-example/setup.html).  
-> Carpentries has moved on to an 'R' based system which we are not using. We are still using this older format.  
-{: .callout}
+> ## Conditions data
+> The conditions data is a subset of the experimental metadata, specifically referring to the metadata required for offline data analysis and reconstruction.
+> The conditions data of ProtoDUNE is stored in a dedicated database, the Conditions Database.
 
 ## Do local setup for local rendering (optional)
 
