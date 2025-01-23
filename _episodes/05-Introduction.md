@@ -25,12 +25,16 @@ The conditions database consists of two PostgreSQL databases.
 2. **The run conditions database** stores a subset of the UConDB metadata in a table. This facilitates querying the metadata with conditions on the table values, for example to get all the runs with certain characteristics, like runs with High Voltage = 175 kV.
 
 ![Conditions database architecture](/fig/dbarc.png)
+
+or try another figure
+
+![Conditions database architecture](fig/dbarc.png)
+
 An illustration of both ProtoDUNE's metadata stream and the design of the conditions database. The direction of the metadata stream is shown by the arrows. Users may obtain the metadata by interacting with the conditions database APIs.
 
-## Do local setup for local rendering (optional)
-
-Follow the instructions [https://carpentries.github.io/lesson-example/setup.html#setup-for-local-rendering-of-the-lessons-optional](https://carpentries.github.io/lesson-example/setup.html#setup-for-local-rendering-of-the-lessons-optional) for setup on your local machine - in principle this is optional but in practice it is really helpful.  You are going to need ruby and pyYAML.  I used conda on a mac but they have instructions for Windows, Mac and UNIX. 
-
-> ## Alert 
-> At this point you should stop following their instructions and start using our github template to avoid overwriting DUNE specific items. 
-{: .caution}
+The conditions database has the following characteristics:
+* It contains metadata, uploaded daily via cron jobs, from several parts of the experiment, such as: DAQ configurations, slow control parameters, beam instrumentation, data quality, and calibration parameters.
+* The database allows the stored metadata to be index by time (like slow controls), or by run (like DAQ run configurations).
+* The following API's facilitate the interaction of users with the conditions data: an interface with _art_ which is the framework used by the offline software to process LArTPC data from ProtoDUNE; a python rest API; a C++ API; and an interface with Metacat which is ProtoDUNE's metadata file catalog.
+* There is detailed documentation on how to install and use the UconDB and the run conditions database python API's that, amongst other things, lets users upload or download data from the databases. 
+* Admin users are the only ones allowed to upload data to the databases. Nevertheless all users can view and download the data. 
