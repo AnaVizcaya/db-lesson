@@ -37,15 +37,15 @@ There are two methos for installing the condb2 python API used to interact with 
     and it should give the following output
    
     ~~~
-    condb 
+     condb 
        create [options] <database name> <folder_name> <column>:<type> [...]
        write  [options] <database name> <folder_name> < <CSV file>
        read   [options] <database name> <folder_name>
        put    [options] <folder_name> < <CSV file>
        get    [options] <folder_name>
        tag    [options] <folder_name> <tag name>
-    ~~~
-    {: .output}
+   ~~~
+   {: .output}
 
 ## Quick look at the data
 Alternatively to the REST API, the curl command can be used to quickly access the tables
@@ -77,8 +77,33 @@ When creating a table, the condb2 API will automatically create the following co
 The next table shows the four columns of all conditions tables in the order in which they are created
 and they have to be filled.
 
+## The table
+
 |channel |tv |tr |data_type |user_defined |
-| ------ | - |-- |--------- |------------ |
+| ------ | --- |--- |--------- |------------ |
 
 The following is an example of how to create a table using the condb2 api
+
+~~~
+import os, subprocess, re
+
+# Table information
+table_name = 'pdunesp.test_prueba' #schema.table_name
+host = ###
+port = ###
+user = ####
+passw = ####
+r_permission = ### # DB users to grant read permissions to
+w_permission = ### #DB users to grant write permissions to
+database = ###
+
+payloads = 'start_time:float run_type:text extra_condition:hstore'
+com = f'condb create -h {host} -p {port} -U {user} -w {passw} -s -R {r_permission} -W {w_permission} {database} {table_name} {payloads}'
+
+comm = re.split(' ', com)
+try:
+    subprocess.run(comm)
+except:
+    print(f'something didnt work with the creation of the table')
+~~~
 
