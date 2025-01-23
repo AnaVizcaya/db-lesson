@@ -35,6 +35,7 @@ There are two methos for installing the condb2 python API used to interact with 
     condb2 
     ~~~
     and it should give the following output
+   
     ~~~
     condb 
        create [options] <database name> <folder_name> <column>:<type> [...]
@@ -62,4 +63,22 @@ curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.test&t
 > Condb2 implements strong client authentication for all requests which modify the state of the database. A username and a password must be provided to create a table and upload content to the DB. Contact Ana Paula Vizcaya or Norm Buchanan to get them. 
 {: .caution}
 
-The first step is to create a table
+
+
+Depending on what information the user wants to store, there are different ways to create and fill out the tables.
+
+### Creating tables
+When creating a table, the condb2 API will automatically create the following columns:
+1. **channel** number used to give the table another dimension.
+2. **tv** key of the table, its data type is a float. There are different possibilities of how to use it and I will go into more detail later on, but they usually are: run numbers, timestamp of when the row was uploaded, or the same value for all rows.
+3. **tr** timestamp in unix time of when the column data was uploaded, this is used to create the tags, or versions pointers of the tables
+4. **data\_type** optional key of the table. With it, is possible to specify an extra condition, for example detector type, or data vs montecarlo
+
+The next table shows the four columns of all conditions tables in the order in which they are created
+and they have to be filled.
+
+|channel |tv |tr |data_type |user_defined |
+| ------ | - |-- |--------- |------------ |
+
+The following is an example of how to create a table using the condb2 api
+
