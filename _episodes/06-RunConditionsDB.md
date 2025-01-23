@@ -11,17 +11,23 @@ keypoints:
 - There are several APIs available to access the information in the conditions database. Which to use depends on your specific needs
 ---
 
-## The Run Conditions Database
+## The Run Conditions Database (Condb2)
 
 Is a PostgreSQL relational database that records and keeps track of the conditions parameters of ProtoDUNE.
 It is based on the [conditions database at FNAL](https://cdcvs.fnal.gov/redmine/projects/condb/wiki/Conditions_Database_at_Fermilab)
 
-It stores a subset of the ProtoDUNE metadata, which is kept organized in tables.
+It stores a subset of the ProtoDUNE metadata, which is kept organized in tables. Some examples are:
+* Run Conditions table
+* Calibration tables
 
-## Installing the python API
+## Getting started
 There are two methos for installing the condb2 python API used to interact with the database.
 1. Follow the instructions on their wepabge [condb2](https://fermisda-condb2.readthedocs.io/en/latest/client_installation.html)
-2. Intall it using Spack 
+   * Where the ConDB URL server for ProtoDUNE data is:
+   ~~~
+   CONDB_SERVER_URL='https://dbdata0vm.fnal.gov:9443/dune_runcon_prod'
+   ~~~
+3. Intall it using Spack 
     - On a dunegpvm machine on Alma9 run the following comands: 
     ~~~
     source /cvmfs/larsoft.opensciencegrid.org/spack-packages/setup-env.sh
@@ -29,7 +35,6 @@ There are two methos for installing the condb2 python API used to interact with 
     condb2 
     ~~~
     and it should give the following output
-   
     ~~~
     condb 
        create [options] <database name> <folder_name> <column>:<type> [...]
@@ -40,4 +45,21 @@ There are two methos for installing the condb2 python API used to interact with 
        tag    [options] <folder_name> <tag name>
     ~~~
     {: .output}
+
+## Quick look at the data
+Alternatively to the REST API, the curl command can be used to quickly access the tables
+~~~
+curl "{CONDB_SERVER_URL}/get?folder={folder_name}&t={key}"
+~~~
+where {CONDB_SERVER_URL}, {folder_name}, and {key} must be replaced with the desired information. The folder_name must be replaced with the format schema.table_name (like: pdunesp.test), and the key is usually a run number or t >= 0. ProtoDUNE tables are located in the schema pdunesp. An example that retrieves data from the table pdunesp.test to get info from run 23300 is provided below. 
+
+~~~
+curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.test&t=23300"
+~~~
+   
 ## How to upload data
+> ## Alert
+> Condb2 implements strong client authentication for all requests which modify the state of the database. A username and a password must be provided to create a table and upload content to the DB. Contact Ana Paula Vizcaya or Norm Buchanan to get them. 
+{: .caution}
+
+The first step is to create a table
