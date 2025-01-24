@@ -20,7 +20,23 @@ It stores a subset of the ProtoDUNE metadata, which is kept organized in tables.
 * Run Conditions table
 * Calibration tables
 
-## Getting started
+## Quick look at the data
+
+The [Conditions Database](https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/B/index?namespace=pdunesp) web interface shows all the table names, of the conditions database. There, it is also possible to plot some values of certain tables as shown in the following picture. 
+
+![Example plot in conditions database web interface](/assets/img/CondEx.png)
+
+Alternatively to the web interface, the curl command can be used to quickly access the data in the tables
+~~~
+curl "{CONDB_SERVER_URL}/get?folder={folder_name}&t={key}"
+~~~
+where {CONDB_SERVER_URL}, {folder_name}, and {key} must be replaced with the desired information. The folder_name must be replaced with the format schema.table_name (like: pdunesp.test), and the key is usually a run number or t >= 0. ProtoDUNE tables are located in the schema pdunesp. An example that retrieves data from the table pdunesp.test to get info from run 23300 is provided below. 
+
+~~~
+curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.test&t=23300"
+~~~
+
+## Getting started with the condb2 api
 There are two methos for installing the condb2 python API used to interact with the database.
 1. Follow the instructions on their wepabge [condb2](https://fermisda-condb2.readthedocs.io/en/latest/client_installation.html)
    * Where the ConDB URL server for ProtoDUNE data is:
@@ -46,17 +62,6 @@ There are two methos for installing the condb2 python API used to interact with 
        tag    [options] <folder_name> <tag name>
    ~~~
    {: .output}
-
-## Quick look at the data
-Alternatively to the REST API, the curl command can be used to quickly access the tables
-~~~
-curl "{CONDB_SERVER_URL}/get?folder={folder_name}&t={key}"
-~~~
-where {CONDB_SERVER_URL}, {folder_name}, and {key} must be replaced with the desired information. The folder_name must be replaced with the format schema.table_name (like: pdunesp.test), and the key is usually a run number or t >= 0. ProtoDUNE tables are located in the schema pdunesp. An example that retrieves data from the table pdunesp.test to get info from run 23300 is provided below. 
-
-~~~
-curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.test&t=23300"
-~~~
    
 ## How to upload data
 > ## Alert
