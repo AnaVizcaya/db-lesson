@@ -75,14 +75,29 @@ When creating a table, the condb2 API will automatically create the following co
 4. **data\_type** optional key of the table. With it, is possible to specify an extra condition, for example detector type, or data vs montecarlo
 
 The next table shows the four columns of all conditions tables in the order in which they are created
-and they have to be filled.
+and they have to be filled, plus a 'user_defined' column that represents the rest of the columns that the users can add.
 
 
-| channel | tv   | tr  | data_type | user_defined |
-| ------  | ---  | --- | --------- | ------------ |
-| 0 | 1   | 30000  | TEST | other |
+| channel | tv  | tr  | data_type | user_defined 
+| ------  | --- | --- | --------- | ------------ 
+| 0 | 1  | 30000  | TEST | other 
 
+### Table with run number as tv_key
+In this type of table is possible to store information concerning a run. 
+The column **tv** is used to store the run number. The column **channel** can be left with a constant value (cero), if there are no multiple channels, or it can be used as intended with one number per channel. 
+The column **tr** is filled automatically with the timestamp (unix time) when the data from the row was uploaded. And the column **data\_type** is optional and can be used as an extra key, so the user can choose to specify a string or not. 
 
+The next table is an example of a table with run number as key. The monte carlo data has just one channel and so if the data is retrieved for those run numbers it will return just one value. Since the raw data has multiple channels, if its retrieved for run 3 it will return 3 rows of data.
+
+| channel | tv  | tr  | data_type | user_defined 
+| ------  | --- | --- | --------- | ------------ 
+| 0 | 1  | 1712184741 | mc_data | other 
+| 0 | 2  | 1712184742 | mc_data | other 
+| 0 | 3  | 1712184743 | raw_data | other 
+| 1 | 3  | 1712184743 | raw_data | other 
+| 2 | 3  | 1712184743 | raw_data | other 
+
+### Example of how to create a table using the condb2 python API
 The following is an example of how to create a table using the condb2 api
 
 ~~~
