@@ -92,11 +92,10 @@ The next table is an example of a table with run number as key. The monte carlo 
 | 0 | 1  | 1712184741 | mc_data | other 
 | 0 | 2  | 1712184742 | mc_data | other 
 | 0 | 3  | 1712184743 | raw_data | other 
-| 1 | 3  | 1712184743 | raw_data | other 
-| 2 | 3  | 1712184743 | raw_data | other 
+| 1 | 3  | 1712184744 | raw_data | other 
+| 2 | 3  | 1712184745 | raw_data | other 
 
-> ## 
-> Run numbers are interpolated
+> ## Run numbers are interpolated
 > It is important to note that when using the run number ot tv_key to extract data, the function interpolates the tv_key values. So, if there is a run that does not have any column, the 'get' function will return the row with the run number closest to the value given.
 {: .callout}
 
@@ -106,7 +105,15 @@ In this type of table its possible to store information that changes with time, 
 The column **tv** is used to store the timestamp in unix time when the data was taken. The column **channel** can be left with a constant value, if there are no multiple channels, or it can be used as intended with one number per channel. 
 The column **tr** is filled automatically with the timestamp (unix time) when the data from the row was uploaded. And the column **data\_type** is optional, so the user can choose to specify a string or not. 
 
-The next table shows an example with timestamp as key. 
+The next table shows an example with timestamp as tv_key. 
+
+| channel | tv  | tr  | data_type | user_defined 
+| ------  | --- | --- | --------- | ------------ 
+| 0 | 1712184001  | 1712184741 | mc_data | other 
+| 0 | 1712184002  | 1712184742 | mc_data | other 
+| 0 | 1712184003  | 1712184743 | raw_data | other 
+| 1 | 1712184003  | 1712184744 | raw_data | other 
+| 2 | 1712184003  | 1712184745 | raw_data | other 
 
 ### Example of how to create a table using the condb2 python API
 The following is an example of how to create a table using the condb2 api
@@ -134,3 +141,7 @@ except:
     print(f'something didnt work with the creation of the table')
 ~~~
 
+### Tag a table
+It is possible to **tag** a table to create different versions. The API will always returns values from the 'newer' version unless otherwise specified. The tag is related to the **tr** column of when the data was uploaded. It is also possible to leave coments when creating a new table version.
+
+The following is an example of how to create a new version of a table using the ucondb2 API.
