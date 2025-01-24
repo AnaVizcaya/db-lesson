@@ -63,8 +63,6 @@ curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.test&t
 > Condb2 implements strong client authentication for all requests which modify the state of the database. A username and a password must be provided to create a table and upload content to the DB. Contact Ana Paula Vizcaya or Norm Buchanan to get them. 
 {: .caution}
 
-
-
 Depending on what information the user wants to store, there are different ways to create and fill out the tables.
 
 ### Creating tables
@@ -96,6 +94,19 @@ The next table is an example of a table with run number as key. The monte carlo 
 | 0 | 3  | 1712184743 | raw_data | other 
 | 1 | 3  | 1712184743 | raw_data | other 
 | 2 | 3  | 1712184743 | raw_data | other 
+
+> ## `.callout`
+>
+> It is important to note that when using the key to extract data, it interpolates the key values. So, if there is a run that does not have any column, the 'get' function will return the row with the run number closest to the value given.
+{: .callout}
+
+### Table with timestam as tv_key
+In this type of table its possible to store information that changes with time, for example slow control parameters.
+
+The column **tv** is used to store the timestamp in unix time when the data was taken. The column **channel** can be left with a constant value, if there are no multiple channels, or it can be used as intended with one number per channel. 
+The column **tr** is filled automatically with the timestamp (unix time) when the data from the row was uploaded. And the column **data\_type** is optional, so the user can choose to specify a string or not. 
+
+The next table shows an example with timestamp as key. 
 
 ### Example of how to create a table using the condb2 python API
 The following is an example of how to create a table using the condb2 api
