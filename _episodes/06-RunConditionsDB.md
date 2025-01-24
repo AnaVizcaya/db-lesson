@@ -77,8 +77,11 @@ When creating a table, the condb2 API will automatically create the following co
 The next table shows the four columns of all conditions tables in the order in which they are created
 and they have to be filled.
 
+
 | channel | tv   | tr  | data_type | user_defined |
 | ------  | ---  | --- | --------- | ------------ |
+| 0 | 1   | 30000  | TEST | other |
+
 
 The following is an example of how to create a table using the condb2 api
 
