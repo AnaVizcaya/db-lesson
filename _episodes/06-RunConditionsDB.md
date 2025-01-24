@@ -95,9 +95,9 @@ The next table is an example of a table with run number as key. The monte carlo 
 | 1 | 3  | 1712184743 | raw_data | other 
 | 2 | 3  | 1712184743 | raw_data | other 
 
-> ## `.callout`
->
-> It is important to note that when using the key to extract data, it interpolates the key values. So, if there is a run that does not have any column, the 'get' function will return the row with the run number closest to the value given.
+> ## 
+> Run numbers are interpolated
+> It is important to note that when using the run number ot tv_key to extract data, the function interpolates the tv_key values. So, if there is a run that does not have any column, the 'get' function will return the row with the run number closest to the value given.
 {: .callout}
 
 ### Table with timestam as tv_key
