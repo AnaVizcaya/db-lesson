@@ -154,4 +154,15 @@ The following is an example of how to upload data using the ucondb2 API
 ### Tag a table
 It is possible to **tag** a table to create different versions. The API will always returns values from the 'newer' version unless otherwise specified. The tag is related to the **tr** column of when the data was uploaded. It is also possible to leave coments when creating a new table version.
 
-The following is an example of how to create a new version of a table using the ucondb2 API.
+The following is an example of how to create a new version (v1.001) of the table "ExampleTable" in the namespace "pdune" using the ucondb2 API and using the web access python API 
+~~~
+from condb2 import ConDB, ConDBClient
+
+client = ConDBClient('https://dbdata0vm.fnal.gov:9443/dune_runcon_prod')
+folder = 'pdune.ExampleTable'
+client.tag_state(folder, tag='v1.001', tr=None, copy_from=None, override=False)
+~~~
+
+It is also possible to look at the tags that a table already has. For that we need to use the Direct Access Python API. In general, it is better to use the web access python API, and more information can be found in the [condb2](https://fermisda-condb2.readthedocs.io/en/latest/client_installation.html) webpage. The following is an example to look at the tags.
+
+
