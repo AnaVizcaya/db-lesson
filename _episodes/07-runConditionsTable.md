@@ -19,8 +19,7 @@ It contains the conditions of each run, and the data can be retrieved by several
 # Table information
 As of now, the table contains the following metadata. 
 
-> `Add table`
->
+> ## Add table
 > Add the table
 {: .caution}
 
@@ -35,7 +34,7 @@ curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_co
 ~~~
 The above example queries the conditions of run "25034" or **the closest run to "25034"**.
 
-> `Remember`
+> ## Remember
 > 1. If the given run does not exists the previous query will return the closest run.
 > 2. the column representing run number is called 'tv'.
 > Add the table
