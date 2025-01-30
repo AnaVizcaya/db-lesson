@@ -25,6 +25,7 @@ As of now, the table contains the following metadata.
 
 ## How to access the data
 
+### Curl command
 There are several methods available for users to access the data of the run conditions table.
 The most straightforward way is to access the data with a curl command on the terminal or on the web.
 
@@ -49,3 +50,8 @@ To get the conditions of a range of runs, for example [25100,25115] use:
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditionstest&t0=28650&t1=28655"
 ~~~
+
+## Python API (Condb2)
+Detailed documentation about the conditions database python REST API can be found in the [condb2](https://fermisda-condb2.readthedocs.io/en/latest/client_installation.html) webpage.
+
+To use the API, it is necessary to install it, as it is explained in the webpage. Once that is done, it is recommended to use the condb web access python API, instead of the direct access. For the run conditions table, the url that must be provided is: 
