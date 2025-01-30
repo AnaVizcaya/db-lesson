@@ -26,8 +26,12 @@ As of now, the table contains the following metadata.
 ## How to access the data
 
 There are several methods available for users to access the data of the run conditions table.
+The most straightforward way is to access the data with a curl command on the terminal or on the web.
 
-The most straightforward way is to access the data with a curl command on the terminal or on the web:
+> ## What you need to know
+> 1. The database url. For our example: https://dbdata0vm.fnal.gov:9443/dune_runcon_prod
+> 2. The table name. For our example: pdunesp.run_conditionstest
+{: .checklist}
 
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditionstest&t=28650"
@@ -41,3 +45,7 @@ The above example queries the conditions of run "25034" or **the closest run to 
 {: .caution}
 
 To get the conditions of a range of runs, for example [25100,25115] use:
+
+~~~
+curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditionstest&t0=28650&t1=28655"
+~~~
