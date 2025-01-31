@@ -65,3 +65,43 @@ The web API consists of some functions to retrieve or upload data, as well as cr
 The run conditions table uses the c++ interface and art service of the conditions database mentioned in the [conditions database](https://wiki.dunescience.org/wiki/Conditions_Database_(ProtoDUNE)) of ProtoDUNE webpage.
 
 It is located with the dunecalib service. The github repository is [dunecalib](https://github.com/DUNE/dunecalib). And a presentation with information on how to use the run conditions c++ interface and service can be found [here](https://indico.fnal.gov/event/63876/contributions/286958/attachments/176138/240028/DB-meeting-19March2024.pdf).
+
+### C++ interface
+To start using run conditions parameters include the following header files on your c++ file
+~~~
+#include "dunecalib/ConInt/RunConditionsProtoDUNE.h"
+#include "nuevdb/IFDatabase/Table.h"
+~~~
+and set up the table to upload
+
+~~~
+condb::RunConditionsProtoDUNE* runCond = new condb::RunConditionsProtoDUNE();
+runCond->SetTableURL("https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/");
+runCond->SetTableName("pdunesp.run_conditionstest");
+runCond->SetVerbosity(0); // How much output, (0,3) - (none, more)
+runCond->SetRunNumber1(0); //Change if a range of runs is desired
+runCond->UpdateRN(25034); //Run Number
+//runCond->SetTag(gDBTag); // If database has more than one version
+runCond->LoadConditionsT();
+~~~
+Now you are ready to load and use the conditions parameters! The following is just one example to output some conditions on the terminal: 
+
+~~~
+condb::RunCond_t rc = runCond->GetRunConditions(run);
+std::cout << "\tStart time = " << rc.start_time
+            << "\n\tdata type = " << rc.data_type
+            << "\n\trun Number/sofw = " << rc.run_number
+  	        << "\n\tupload time = " << rc.upload_t
+            << "\n\tsoftware version = " << rc.software_version
+            << "\n\tstop_time = " << rc.stop_time 
+            << "\n\tbuffer = " << rc.buffer
+            << "\n\tac_couple = " << rc.ac_couple
+            << "\n\trun type = " << rc.run_type << std::endl;
+
+~~~
+
+A complete example script can be found in: dunecalib/dunecalib/ConInt/getRunConditionsPDUNE.cc and that example can be run as follows: 
+
+~~~
+getRunConditionsPDUNE -r 25016
+~~~
