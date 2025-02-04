@@ -43,10 +43,6 @@ As of now, the table contains the following metadata:
 | +5 | positive or negative | 175000 |  | |  |  | |
 | indirectly calculated using magnet MBPL.022.692 current, and rounded up| looking at magnet MBPL.022.692 current | from sensorID: 47894774153498 which is NP04_DCS_01:Heinz_V |  | |  |  | |
 
-> ## Add table
-> Add the table
-{: .caution}
-
 ## How to access the data
 
 ### Curl command
@@ -65,12 +61,10 @@ The above example queries the conditions of run "25034" or **the closest run to 
 
 > ## Remember
 > 1. If the given run does not exists the previous query will return the closest run.
-> 2. the column representing run number is called 'tv'.
-> Add the table
+> 2. The column representing **run number** is called **tv**.
 {: .caution}
 
-To get the conditions of a range of runs, for example [25100,25115] use:
-
+To get the conditions of a range of runs, for example [25100,25115] use the following query:
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditionstest&t0=28650&t1=28655"
 ~~~
@@ -78,17 +72,17 @@ curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_co
 ## Python API (Condb2)
 Detailed documentation about the conditions database python REST API can be found in the [condb2](https://fermisda-condb2.readthedocs.io/en/latest/client_installation.html) webpage.
 
-To use the API, it is necessary to install it, as it is explained in the webpage. Once that is done, it is recommended to use the condb web access python API, instead of the direct access. For the run conditions table, the url that must be provided is: 
+To use the API, it is necessary to install it, as it is explained in the webpage. Once that is done, it is recommended to use the condb2  *web access python API*, instead of the direct access. For the run conditions table, the url that must be provided is: 
 
 1. The database url: https://dbdata0vm.fnal.gov:9443/dune_runcon_prod
 2. The table/folder name: pdunesp.run_conditionstest
 
-The web API consists of some functions to retrieve or upload data, as well as create table versions. Detailed explanation on how to use them can be found in the web access python API webpage. To use the functions get_data or search_data it is not necessary to provide username or password, nevertheless they are required to use the function put_data. To get a valid username and password contact Ana Paula Vizcaya or Norm Buchanan. They can also provide some example scripts. 
+The  *web access python API* includes functions for retrieving and uploading data, as well as creating table and table versions. Detailed documentation on how to use these functions can be found in the *web access python API* webpage. To use the functions get_data or search_data it is not necessary to provide username or password, nevertheless they are required to use the function put_data. To get a valid username and password contact Ana Paula Vizcaya or Norm Buchanan from the database team.
 
 ## c++ interface and art service
 The run conditions table uses the c++ interface and art service of the conditions database mentioned in the [conditions database](https://wiki.dunescience.org/wiki/Conditions_Database_(ProtoDUNE)) of ProtoDUNE webpage.
 
-It is located with the dunecalib service. The github repository is [dunecalib](https://github.com/DUNE/dunecalib). And a presentation with information on how to use the run conditions c++ interface and service can be found [here](https://indico.fnal.gov/event/63876/contributions/286958/attachments/176138/240028/DB-meeting-19March2024.pdf).
+It is located with the dunecalib service. The github repository is [dunecalib](https://github.com/DUNE/dunecalib). A presentation with information on how to use the run conditions c++ interface and service can be found [here](https://indico.fnal.gov/event/63876/contributions/286958/attachments/176138/240028/DB-meeting-19March2024.pdf).
 
 ### C++ interface
 To start using run conditions parameters include the following header files on your c++ file
