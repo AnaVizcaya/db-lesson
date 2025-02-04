@@ -4,20 +4,26 @@ teaching: 30
 exercises: 0
 questions:
 - What is the Run Conditions Table?
-- What data is stored in the table?
-- How to access the data
+- What data is stored in this table?
+- How to access the data?
 objectives:
 - Learn how to access and stream the data from tables in the conditions database by using the run conditions table as an example
 keypoints:
-- There are several APIs available to access the information in the conditions database. Which to use depends on your specific needs
+- There are several APIs available to access the information in the conditions database. Which to use depends on your specific needs.
 ---
 
 ## The Run Conditions Table
 The run conditions table is stored at the ProtoDUNE conditions database.
-It contains the conditions of each run, and the data can be retrieved by several methods to accommodate user needs. 
+It contains the conditions for each run, and the data can be accessed through various methods to suit different user needs.
 
 # Table information
-As of now, the table contains the following metadata. 
+As of now, the table contains the following metadata:
+
+| Metadata | tv (run) | tr | data_type | upload_time | start_time | stop_time | run_type | detector_id |software_version | data_quality
+| -------- | -------- | ---| ----------| ------------| -----------| ----------| ---------| ------------| ----------------| ---
+| Unit | N/A | Unix | N/A | Unix | Unix | Unix | N/A | N/A | N/A | N/A 
+| Example | 25034 | 1713497099.738875 | np02_coldbox or np04_hd| 1713497099.7388604 | 1713268519.0 | 1713269109.0 | PROD | np02_coldbox or np04_hd or np02_hermes_WIB_conf | fddaq-v4.4.0-rc3-a9 | good or bad
+|Comment| Run number| Used for versioning | | | |  | data_stream | | | offline good runs
 
 > ## Add table
 > Add the table
