@@ -21,12 +21,13 @@ As of now, the table contains the following metadata:
 
 |          | tv (run) | tr | data_type | upload_time | start_time | stop_time | run_type | detector_id |software_version 
 | -------- | -------- | ---| ----------| ------------| -----------| ----------| ---------| ------------| ----------------
-| Unit | N/A | Unix | N/A | Unix | Unix | Unix | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | mV/fC | N/A | pA | N/A | pA | us | N/A
+| Unit | N/A | Unix | N/A | Unix | Unix | Unix | N/A | N/A | N/A 
 | Example | 25034 | 1713497099.738875 | np02_coldbox or np04_hd| 1713497099.7388604 | 1713268519.0 | 1713269109.0 | PROD | np02_coldbox or np04_hd or np02_hermes_WIB_conf | fddaq-v4.4.0-rc3-a9 
 |Comment| Run number| Used for versioning | | | |  | data_stream | | 
 
 | data_quality | ac_couple | baseline | buffering | enabled | gain | gain_match | leak | leak_10x |leak_f | peak_time | pulse_dac
 | --- | -------- | -------- | ---| ----------| ------------| -----------| ----------| ---------| --------|-----| ---
+| N/A | N/A | N/A | N/A | N/A | mV/fC | N/A | pA | N/A | pA | us | N/A
 | good or bad | dc_coupling or ac_coupling |2 |0 |True |14.0 | True | 500.0 | False | None | 2.0 | 0
 | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) | 0 (no buffer), 1 (se buffer), 2 (sedc buffer) | True of FEMB should be configured and read out by WIB |Options: 14, 25, 7.8, 4.7 mV/fC | Enable pulser DAC gain matching | | Multiply leak current by 10 if true | final leak value | Channel peak time selector|Pulser DAC setting [0-63]
 
