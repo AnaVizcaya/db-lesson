@@ -166,3 +166,22 @@ pdune_runconditions :
 END_PROLOG
 ~~~
 
+### Metacat filter
+The run conditions table also works as a filter in ProtoDUNE's metadata catalog ([Metacat](https://metacat.readthedocs.io/en/latest/)) queries.
+With it, you can search for run files using parameters from the run conditions table as filters.
+
+> ## What you need to know
+> The run conditions table filter name, for metacat, is **dune_runshistdb**. 
+{: .checklist}
+
+To use the filter in metacat to query files, follow the next steps. 
+
+1. Go to [Metacat web interface](https://metacat.fnal.gov:9443/dune_meta_prod/app/gui/query)
+2. Click on the query option on the top of the webpage
+3. Enter the query and run
+
+The following is an example of a Metacat query to look for files of run 25016 where the run_type is PROD. This last condition looks at the data from the run conditions table. 
+~~~
+filter dune_runshistdb() (files from hd-protodune:hd-protodune_25016) where runs_history.run_type = PROD
+~~~
+The first part contains the filter name ** dune_runshistdb**. The code between () contains the dataset of files to look from (files from hd-protodune:hd-protodune_25016). And the final part contain the filter using the run condition parameter **runs_history.run_type = PROD**.
