@@ -163,6 +163,9 @@ condb2 put [options] <folder_name> <CSV file>
 ~~~
 
 #### Using the web access python API
+~~~
+from condb2 import ConDB, ConDBClient
+~~~
 
 ### Tag a table
 It is possible to **tag** a table to create different versions. The API will always returns values from the 'newer' version unless otherwise specified. The tag is related to the **tr** column of when the data was uploaded. It is also possible to leave coments when creating a new table version.
