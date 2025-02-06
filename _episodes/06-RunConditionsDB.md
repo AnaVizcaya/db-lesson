@@ -149,7 +149,11 @@ except:
 ### Uploading data to the table
 Now its time to upload data to the previously created table. 
 
-The following is an example of how to upload data using the ucondb2 API
+The following examples use the ucondb2 API.
+
+#### Using the command line interface
+
+#### Using the web access python API
 
 ### Tag a table
 It is possible to **tag** a table to create different versions. The API will always returns values from the 'newer' version unless otherwise specified. The tag is related to the **tr** column of when the data was uploaded. It is also possible to leave coments when creating a new table version.
