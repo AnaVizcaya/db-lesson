@@ -152,6 +152,15 @@ Now its time to upload data to the previously created table.
 The following examples use the ucondb2 API.
 
 #### Using the command line interface
+~~~
+condb2 put [options] <folder_name> <CSV file>
+
+  Options:
+      -s <server URL>             CONDB_SERVER_URL envirinment variable can be used too
+      -U <username>
+      -w <password>
+      -d <data type>
+~~~
 
 #### Using the web access python API
 
