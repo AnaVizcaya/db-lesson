@@ -218,10 +218,17 @@ from condb2 import ConDBClient
 client = ConDBClient('https://dbdata0vm.fnal.gov:9443/dune_runcon_prod')
 folder = 'pdune.ExampleTable'
 
-# search_data example - Search data, or runs that comply with the following conditions
-con = [("run_type","=",'PROD'),("buffer",">=",0)] # Example conditions on the data
-columns, data = client.search_data(folder, conditions=con)
+# get_data example - Get data from given run
+run = 18000
+columns, data = client.get_data(table, t0=run)
 print("columns:", ','.join(columns))
 for line in data:
+    print(line)
+
+# search_data example - Search data, or runs that comply with the following conditions
+con = [("run_type","=",'PROD'),("buffer",">=",0)] # Example conditions on the data
+col, data1 = client.search_data(folder, conditions=con)
+print("columns:", ','.join(col))
+for line in data1:
     print(line)
 ~~~
