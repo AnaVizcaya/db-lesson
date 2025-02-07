@@ -191,7 +191,7 @@ client.tag_state(folder, tag='v1.001', tr=None, copy_from=None, override=False)
 It is also possible to look at the tags that a table already has. For that we need to use the Direct Access Python API. In general, it is better to use the web access python API, and more information can be found in the [condb2](https://fermisda-condb2.readthedocs.io/en/latest/client_installation.html) webpage. The following is an example to look at the tags.
 
 ~~~
-from condb2 import ConDB, ConDBClient
+from condb2 import ConDB
 
 def connect(self):
     host    =  ### 
@@ -211,3 +211,17 @@ for tag in tags:
 ~~~
 
 ### More in depth look at the data
+It is possible to examine the data by appliying conditions to the table columns to filter resutls.
+~~~
+from condb2 import ConDBClient
+
+client = ConDBClient('https://dbdata0vm.fnal.gov:9443/dune_runcon_prod')
+folder = 'pdune.ExampleTable'
+
+# search_data example - Search data, or runs that comply with the following conditions
+con = [("run_type","=",'PROD'),("buffer",">=",0)] # Example conditions on the data
+columns, data = client.search_data(folder, conditions=con)
+print("columns:", ','.join(columns))
+for line in data:
+    print(line)
+~~~
