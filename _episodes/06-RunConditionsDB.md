@@ -163,8 +163,16 @@ condb2 put [options] <folder_name> <CSV file>
 ~~~
 
 #### Using the web access python API
+In the following example it is possible to fill out all the columns of the table or specify which ones to fill
 ~~~
-from condb2 import ConDB, ConDBClient
+from condb2 import ConDBClient
+
+client = ConDBClient('https://dbdata0vm.fnal.gov:9443/dune_runcon_prod')
+folder = 'pdune.ExampleTable'
+
+data = [0, 18000, "test"]   #Starting with channel, tv, 
+columns = [“channel”, “tv”, "user_defined"]   #Specify columns to fill or leave blank for all
+client.put_data(folder, data, columns,  data_type="pdune_hd") # data type can be used as another key in the table
 ~~~
 
 ### Tag a table
@@ -172,10 +180,11 @@ It is possible to **tag** a table to create different versions. The API will alw
 
 The following is an example of how to create a new version (v1.001) of the table "ExampleTable" in the namespace "pdune" using the ucondb2 API and using the web access python API 
 ~~~
-from condb2 import ConDB, ConDBClient
+from condb2 import ConDBClient
 
 client = ConDBClient('https://dbdata0vm.fnal.gov:9443/dune_runcon_prod')
 folder = 'pdune.ExampleTable'
+
 client.tag_state(folder, tag='v1.001', tr=None, copy_from=None, override=False)
 ~~~
 
@@ -201,3 +210,4 @@ for tag in tags:
             print(tag, 'This is the tag')
 ~~~
 
+### More in depth look at the data
