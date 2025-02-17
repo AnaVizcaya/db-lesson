@@ -37,3 +37,35 @@ The conditions database has the following characteristics:
 
 
 ## The master store of metadata (UConDB) database
+ProtoDUNE UConDB has a collection of **folders** which in turn can have a collection of **objects**. Each object has a unique **key** that should be used to retrieve the information. The **key** can be the run number or a timestamp.
+
+The ucondb will store all ProtoDUNE metadata in the folder **protodune_conditions**. Each kind of metadata will have it's own object, for example: 
+* daq_config_v2 - the configuration of the DAQ processes in each run and the configuration of the front-end electronics
+* ifbeam_imagnet - the current of the magnet "" coming from the IFbeam DB
+* ifbeam_momentum - the beam central momentum calculated using the magnet current
+* np04_hv_setting - the setting of the high voltage comming from the slow cotrols DB
+
+### Getting started 
+There are different ways to access and upload/download the contents of the ucondb. 
+
+A REST API was created by Igor V Mandrichenko. It also contains a command line interface. Instructions on how to install it and how to use it can be found in the [UConDB documentation](https://ucondb.readthedocs.io/en/latest/).
+
+The UConDB URL server must be provided, for ProtoDUNE data use: 
+~~~
+export UCONDB_SERVER_URL='https://dbdata0vm.fnal.gov:9443/protodune_ucon_prod/app'
+~~~
+The ProtoDUNE folder should also be provided which is: protodune_conditions 
+
+### Quick Access
+Alternatively to the REST API, the curl command can be used to retrieve the data:
+~~~
+curl -o output.file "{UCONDB_SERVER_URL}/get?folder={folder_name}&object={object_name}&tv={key}"
+~~~
+where {UCONDB_SERVER_URL}, {folder_name}, {object_name}, and {key} must be replaced with the desired information. An example that retrieves data from the folder named test, the object named test, usesing the run key of 12008 is provided below. 
+~~~
+curl -o output.file "https://dbdata0vm.fnal.gov:9443/protodune_ucon_prod/app/get?folder=test&object=test&tv=12008"
+~~~
+For ProtoDUNE data the folder name protodune_conditions should be used. 
+> ## Remember
+> ProtoDUNE data is stored in the folder: protodune_conditions 
+{: .callout}
