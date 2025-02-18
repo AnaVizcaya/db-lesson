@@ -69,3 +69,15 @@ For ProtoDUNE data the folder name protodune_conditions should be used.
 > ## Remember
 > ProtoDUNE data is stored in the folder: protodune_conditions 
 {: .callout}
+
+### Upload data to the database
+UConDB implements strong client authentication for all requests which modify the state of the database. A username and a password must be used to upload content to the DB. Contact Ana Paula Vizcaya or Norm Buchanan from the database group to get them. 
+
+The command line interface of the python web API can be used to upload data, as explained in it's documentation webpage.
+
+Alternatively, the curl command can also be used:
+~~~
+curl -T data.file --digest -u user:password -X PUT "{UCONDB_SERVER_URL}/data/{folder_name}/{object_name}/key={key}"
+~~~
+where {UCONDB_SERVER_URL}, {folder_name}, {object_name}, and {key} must be replaced with the desired information. The key can be a float, usually corresponding to the run number or timestamp.
+
