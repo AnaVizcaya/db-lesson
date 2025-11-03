@@ -32,8 +32,8 @@ As of now, the table contains the following metadata:
 |   | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) |Options: 14, 25, 7.8, 4.7 mV/fC | Channel peak time selector| True if the calibration pulser should be enabled | list of APAs | Enable the test capacitor
 
 
-| beam_momentum_mean | beam_momentum_std | beam_momentum_set | beam_polarity | detector_hv | wire_bias_g | wire_bias_u | wire_bias_x | lar_purity | lar_top_temp_mean | lar_bottom_temp_mean
-| --- | -------- | -------- | -------- | ----- | ---| ----------| ------------| -----------| --------- | ----
-| GeV/c | GeV/c | GeV/c | N/A | V |  | |  |  | |
-| +5.352 | 0.042 | +5 | positive or negative | 175000 |  | |  |  | |
-| indirectly calculated using magnet current | | Set value of beam momenutm of the run | looking at magnet current | from sensorID: 47894774153498 which is NP04_DCS_01:Heinz_V |  | |  |  | |
+| beam_momentum_mean | beam_momentum_std | beam_momentum_set | beam_polarity | detector_hv_mean | detector_hv_std | detector_hv_set  | lar_top_temp_mean | lar_bottom_temp_mean
+| --- | -------- | -------- | -------- | -----|  ------| -------| ----- | ----
+| GeV/c | GeV/c | GeV/c | N/A | V | V | V |   |
+| +5.352 | 0.042 | +5 | positive or negative | 176371.3461 | 10.1325 | 176000.0 |   |
+| indirectly calculated using magnet current | | Set value of beam momenutm of the run | looking at magnet current | from sensorID | | Set hv for the run|   |
