@@ -37,3 +37,29 @@ As of now, the table contains the following metadata:
 | GeV/c | GeV/c | GeV/c | N/A | V | V | V |   |
 | +5.352 | 0.042 | +5 | positive or negative | 176371.3461 | 10.1325 | 176000.0 |   |
 | indirectly calculated using magnet current | | Set value of beam momenutm of the run | looking at magnet current | from sensorID | | Set hv for the run|   |
+
+## How to access the data
+
+### Curl command
+There are several methods available for users to access the data of the run conditions table.
+The most straightforward way is to access the data with a curl command on the terminal or on the web.
+
+> ## What you need to know
+> 1. The database url. For our example: https://dbdata0vm.fnal.gov:9443/dune_runcon_prod
+> 2. The table name. For our example: pdunesp.run_conditionstest
+{: .checklist}
+
+~~~
+curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditions_vd&t=39252"
+~~~
+The above example queries the conditions of run "39252" or **the closest run to "25034"**.
+
+> ## Remember
+> 1. If the given run does not exists the previous query will return the closest run.
+> 2. The column representing **run number** is called **tv**.
+{: .caution}
+
+To get the conditions of a range of runs, for example [25100,25115] use the following query:
+~~~
+curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditions_vd&t0=39252&t1=39260"
+~~~
