@@ -25,11 +25,11 @@ As of now, the table contains the following metadata:
 | Example | 25034 | 1713497099.738875 | np02_coldbox or np04_hd| 1713497099.7388604 | 1713268519.0 | 1713269109.0 | PROD | np02_coldbox or np04_hd or np02_hermes_WIB_conf | fddaq-v4.4.0-rc3-a9 
 |Comment| Run number| Used for versioning | | | |  | data_stream | | 
 
-| data_stream | data_quality | ac_couple | baseline | gain | gain_match | leak | leak_10x |leak_f | peak_time | pulse_dac
+| data_stream | data_quality | ac_couple | baseline | gain | peak_time | pulse_dac
 | --- | --- | -------- | -------- | ---| -----------| ----------| ---------| --------|-----| ---
-| N/A | N/A | N/A | N/A | mV/fC | N/A | pA | N/A | pA | us | N/A
-| cosmic, physics or calibration | good or bad | dc_coupling or ac_coupling |2 |14.0 | True | 500.0 | False | None | 2.0 | 0
-|   | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) |Options: 14, 25, 7.8, 4.7 mV/fC | Enable pulser DAC gain matching | | Multiply leak current by 10 if true | final leak value | Channel peak time selector|Pulser DAC setting [0-63]
+| N/A | N/A | N/A | N/A | mV/fC | us | N/A
+| cosmic, physics or calibration | good or bad | dc_coupling or ac_coupling |2 |14.0 | 2.0 | 0
+|   | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) |Options: 14, 25, 7.8, 4.7 mV/fC | Channel peak time selector|Pulser DAC setting [0-63]
 
 |strobe_delay | strobe_length | strobe_skip | test_cap | adc_test_pattern | cold | detector_type | pulser
 | --- | -------- | -------- | ---| ----------| ------------| -----------| ---------
