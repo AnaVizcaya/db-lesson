@@ -26,7 +26,7 @@ As of now, the table contains the following metadata:
 |Comment| Run number| Used for versioning | | | |  | data_stream | | 
 
 | data_stream | data_quality | ac_couple | baseline | gain | peak_time | pulse_dac
-| --- | --- | -------- | -------- | ---| -----------| ----------| ---------| --------|-----| ---
+| --- | --- | -------- | -------- | --------|-----| ---
 | N/A | N/A | N/A | N/A | mV/fC | us | N/A
 | cosmic, physics or calibration | good or bad | dc_coupling or ac_coupling |2 |14.0 | 2.0 | 0
 |   | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) |Options: 14, 25, 7.8, 4.7 mV/fC | Channel peak time selector|Pulser DAC setting [0-63]
