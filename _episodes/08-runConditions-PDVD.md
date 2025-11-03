@@ -25,20 +25,15 @@ As of now, the table contains the following metadata:
 | Example | 25034 | 1713497099.738875 | np02_coldbox or np04_hd| 1713497099.7388604 | 1713268519.0 | 1713269109.0 | PROD | np02_coldbox or np04_hd or np02_hermes_WIB_conf | fddaq-v4.4.0-rc3-a9 
 |Comment| Run number| Used for versioning | | | |  | data_stream | | 
 
-| data_stream | data_quality | ac_couple | baseline | gain | peak_time | pulse_dac
-| --- | --- | -------- | -------- | --------|-----| ---
-| N/A | N/A | N/A | N/A | mV/fC | us | N/A
-| cosmic, physics or calibration | good or bad | dc_coupling or ac_coupling |2 |14.0 | 2.0 | 0
-|   | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) |Options: 14, 25, 7.8, 4.7 mV/fC | Channel peak time selector|Pulser DAC setting [0-63]
+| data_stream | data_quality | ac_couple | baseline | gain | peak_time | pulser | apas | test_cap
+| --- | --- | -------- | -------- | --------|-----| --- | --- | ---
+| N/A | N/A | N/A | N/A | mV/fC | us | N/A | N/A | N/A
+| cosmic, physics or calibration | good or bad | dc_coupling or ac_coupling |2 |14.0 | 2.0 | False | 2,3 | False
+|   | offline good runs | | 0 (900 mV), 1 (200 mV), 2 (200 mV collection, 900 mV induction) |Options: 14, 25, 7.8, 4.7 mV/fC | Channel peak time selector| True if the calibration pulser should be enabled | list of APAs | Enable the test capacitor
 
-|strobe_delay | strobe_length | strobe_skip | test_cap | adc_test_pattern | cold | detector_type | pulser
-| --- | -------- | -------- | ---| ----------| ------------| -----------| ---------
-| N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
-| 255 | 255 | 255 | False | False | False | wib_default | False
-| 64MHz periods to skip after 2MHz edge for strobe (pulser offset 0-255) | Length of strobe in 64MHz periods (pulser length 0-255) | 2MHz periods to skip after strobe (pulser period 0-255) | Enable the test capacitor | True if the COLDADC test pattern should be enabled | True if the front end electronics are COLD (77k) | Options: WIB default, upper APA, lower APA, CRP | True if the calibration pulser should be enabled
 
-| beam_momentum | beam_polarity | detector_hv | wire_bias_g | wire_bias_u | wire_bias_x | lar_purity | lar_top_temp_mean | lar_bottom_temp_mean
+| beam_momentum_mean | beam_momentum_std | beam_momentum_set | beam_polarity | detector_hv | wire_bias_g | wire_bias_u | wire_bias_x | lar_purity | lar_top_temp_mean | lar_bottom_temp_mean
 | --- | -------- | -------- | ---| ----------| ------------| -----------| --------- | ----
-| GeV/c | N/A | V |  | |  |  | |
-| +5 | positive or negative | 175000 |  | |  |  | |
-| indirectly calculated using magnet MBPL.022.692 current, and rounded up| looking at magnet MBPL.022.692 current | from sensorID: 47894774153498 which is NP04_DCS_01:Heinz_V |  | |  |  | |
+| GeV/c | GeV/c | GeV/c | N/A | V |  | |  |  | |
+| +5.352 | 0.042 | +5 | positive or negative | 175000 |  | |  |  | |
+| indirectly calculated using magnet current | | Set value of beam momenutm of the run | looking at magnet current | from sensorID: 47894774153498 which is NP04_DCS_01:Heinz_V |  | |  |  | |
