@@ -1,5 +1,5 @@
 ---
-title: Run Conditions Table
+title: Run Conditions Table of ProtoDUNE-HD
 teaching: 30
 exercises: 0
 questions:
