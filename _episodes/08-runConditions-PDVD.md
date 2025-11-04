@@ -46,7 +46,7 @@ The most straightforward way is to access the data with a curl command on the te
 
 > ## What you need to know
 > 1. The database url. For the protoDUNE-VD run conditions table: **https://dbdata0vm.fnal.gov:9443/dune_runcon_prod**
-> 2. The table name. For the protoDUNE-VD run conditions table: **pdunesp.run_conditionstest**
+> 2. The table name. For the protoDUNE-VD run conditions table: **pdunesp.run_conditions_vd**
 {: .checklist}
 
 ~~~
@@ -70,6 +70,6 @@ Detailed documentation about the conditions database python REST API can be foun
 To use the API, it is necessary to install it, as it is explained in the webpage. Once that is done, it is recommended to use the condb2  *web access python API*, instead of the direct access. For the rprotoDUNE-VD run conditions table, the url that must be provided is: 
 
 1. The database url: **https://dbdata0vm.fnal.gov:9443/dune_runcon_prod**
-2. The table/folder name: **pdunesp.run_conditionstest**
+2. The table/folder name: **pdunesp.run_conditions_vd**
 
 The  *web access python API* includes functions for retrieving and uploading data, as well as creating table and table versions. Detailed documentation on how to use these functions can be found in the *web access python API* webpage. To use the functions get_data or search_data it is not necessary to provide username or password, nevertheless they are required to use the function put_data. To get a valid username and password contact Ana Paula Vizcaya or Norm Buchanan from the database team.
