@@ -111,3 +111,44 @@ std::cout << "\tStart time = " << rc.start_time
             << "\n\tac_couple = " << rc.ac_couple
             << "\n\trun type = " << rc.run_type << std::endl;
 ~~~
+
+### *art* service
+You can also opt to use an art service. A presentation with some information on how to use it can be found [here](https://indico.fnal.gov/event/63876/contributions/286958/attachments/176138/240028/DB-meeting-19March2024.pdf). The source scripts are located in the git dunecalib git repository: dunecalib/dunecalib/ConIntServices.
+> ## Alert
+> This section needs more details
+{: .caution}
+
+To set up the art service in your fhicl file. Include the header files: 
+
+~~~
+#include "runconditions_pdune.fcl"
+~~~
+
+And then in services: 
+
+~~~
+services:
+{
+   servicerun: @local::pdune_runconditions
+}
+~~~
+That should run the run conditinos table service! 
+
+And the fcl file with the variables that can change, such as run number: dunecalib/dunecalib/ConIntServices/runconditions_pdune.fcl. There the url and name of the run conditions table are also specified: 
+
+~~~
+BEGIN_PROLOG
+
+pdune_runconditions :
+{
+  service_provider: "RunConditionsServicePDUNE"
+
+  TableURL: "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/" 
+  TableName: "pdunesp.run_conditions_vd"
+  RunNumber: 39000.0
+  RunNumber1: 0
+  Verbosity: 1
+}
+
+END_PROLOG
+~~~
