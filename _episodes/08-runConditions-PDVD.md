@@ -98,3 +98,16 @@ runCond->UpdateRN(39000); //Run Number
 runCond->LoadConditionsT();
 ~~~
 Now you are ready to load and use the conditions parameters! The following is just one example to output some conditions on the terminal:
+
+~~~
+condb::RunCond_t rc = runCond->GetRunConditions(run);
+std::cout << "\tStart time = " << rc.start_time
+            << "\n\tdata type = " << rc.data_type
+            << "\n\trun Number/sofw = " << rc.run_number
+  	        << "\n\tupload time = " << rc.upload_t
+            << "\n\tsoftware version = " << rc.software_version
+            << "\n\tstop_time = " << rc.stop_time 
+            << "\n\tbuffer = " << rc.buffer
+            << "\n\tac_couple = " << rc.ac_couple
+            << "\n\trun type = " << rc.run_type << std::endl;
+~~~
