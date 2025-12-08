@@ -85,4 +85,16 @@ To start using run conditions parameters include the following header files on y
 #include "dunecalib/ConInt/RunConditionsProtoDUNE.h"
 #include "nuevdb/IFDatabase/Table.h"
 ~~~
-and set up the table to upload
+and set up the table to upload:
+
+~~~
+condb::RunConditionsProtoDUNE* runCond = new condb::RunConditionsProtoDUNE();
+runCond->SetTableURL("https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/");
+runCond->SetTableName("pdunesp.run_conditions_vd");
+runCond->SetVerbosity(0); // How much output, (0,3) - (none, more)
+runCond->SetRunNumber1(0); //Change if a range of runs is desired
+runCond->UpdateRN(39000); //Run Number
+//runCond->SetTag(gDBTag); // If database has more than one version
+runCond->LoadConditionsT();
+~~~
+Now you are ready to load and use the conditions parameters! The following is just one example to output some conditions on the terminal:
