@@ -90,7 +90,7 @@ To start using run conditions parameters include the following header files on y
 #include "dunecalib/ConInt/RunConditionsProtoDUNE.h"
 #include "nuevdb/IFDatabase/Table.h"
 ~~~
-and set up the table to upload
+and set up the table to upload:
 
 ~~~
 condb::RunConditionsProtoDUNE* runCond = new condb::RunConditionsProtoDUNE();
