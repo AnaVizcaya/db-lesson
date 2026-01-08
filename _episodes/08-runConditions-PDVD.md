@@ -52,7 +52,7 @@ The most straightforward way is to access the data with a curl command on the te
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditions_vd&t=39252"
 ~~~
-The above example queries the conditions of run "39252" or **the closest run to "25034"**.
+The above example queries the conditions of run "39252" or **the closest run to "39252"**.
 
 > ## Remember
 > 1. If the given run does not exists the previous query will return the closest run.
