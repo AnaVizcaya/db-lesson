@@ -59,7 +59,7 @@ The above example queries the conditions of run "39252" or **the closest run to 
 > 2. The column representing **run number** is called **tv**.
 {: .caution}
 
-To get the conditions of a range of runs, for example [25100,25115] use the following query:
+To get the conditions of a range of runs, for example [39252,39260] use the following query:
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditions_vd&t0=39252&t1=39260"
 ~~~
