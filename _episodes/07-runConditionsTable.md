@@ -57,14 +57,14 @@ The most straightforward way is to access the data with a curl command on the te
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditionstest&t=28650"
 ~~~
-The above example queries the conditions of run "25034" or **the closest run to "25034"**.
+The above example queries the conditions of run "28650" or **the closest run to "28650"**.
 
 > ## Remember
 > 1. If the given run does not exists the previous query will return the closest run.
 > 2. The column representing **run number** is called **tv**.
 {: .caution}
 
-To get the conditions of a range of runs, for example [25100,25115] use the following query:
+To get the conditions of a range of runs, for example [28650,28655] use the following query:
 ~~~
 curl "https://dbdata0vm.fnal.gov:9443/dune_runcon_prod/get?folder=pdunesp.run_conditionstest&t0=28650&t1=28655"
 ~~~
